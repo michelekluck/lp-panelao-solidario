@@ -15,18 +15,23 @@ function Header() {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="bg-black">
+        <header className="">
 
         {/* Mobile */}
-           <div className="flex justify-between md:hidden">
+           <div className="flex justify-between md:hidden bg-black">
                 <button 
                     type="button" 
                     aria-label={open ? "Fechar menu" : "Abrir menu"}
                     aria-expanded={open}
                     onClick={() => setOpen!(!open)}
+                    className="relative z-50"
                     >
                     <img src={Menu} alt=""/>
                 </button>
+
+                <div>
+                    <h1 className="tracking-normal font-heading font-bold text-offwhite border-2 border-offwhite rounded-full px-4 py-1">PANELÃO SOLIDÁRIO</h1>
+                </div>
                 
                 <div>
                     <LogoIcon className="text-offwhite"/>
@@ -34,7 +39,7 @@ function Header() {
            </div>
 
            <nav className="md:hidden">
-                <ul className={`${open ? "" : "hidden"} md:flex text-white`}>
+                <ul className={`${open ? "flex" : "hidden"} md:flex text-offwhite bg-black w-1/2 fixed left-0 top-0 h-screen flex-col gap-6 p-6 mt-10 font-body font-bold`}>
                     {menuItems.map((item) => (
                         <li key={item.href}>
                             <a href={item.href}>{item.label}</a>
@@ -49,17 +54,21 @@ function Header() {
             <nav>
                 <ul className="flex justify-between items-center">
                    {menuItems.slice(0,3).map((item) =>(
-                        <li key={item.href}>
+                        <li key={item.href} className="font-body font-bold">
                             <a href={item.href}>{item.label}</a>
                         </li>
                    ))}
 
-                   <li>
-                        <LogoIcon className="text-primary"/>
+                   <li className="flex text-primary">
+                        <LogoIcon/>
+                        <h1 className="ml-4 font-heading leading-[19px] font-bold text-[16px]">
+                            PANELÃO <br/> 
+                            SOLIDÁRIO
+                        </h1>
                    </li>
 
                    {menuItems.slice(3).map((item) => (
-                        <li key={item.href}>
+                        <li key={item.href} className="font-body font-bold">
                             <a href={item.href}>{item.label}</a>
                         </li>
                     ))}

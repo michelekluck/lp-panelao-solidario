@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  margin: 16px;
+}
+
+@theme {
+  --color-primary: #E84641;
+  --color-offwhite: #F5F2D0;
+}

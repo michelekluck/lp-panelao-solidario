@@ -10,6 +10,7 @@ body {
 @theme {
   --color-primary: #E84641;
   --color-offwhite: #F5F2D0;
+  --color-image:rgb(83 21 19 / 46%);
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inconsolata", monospace;

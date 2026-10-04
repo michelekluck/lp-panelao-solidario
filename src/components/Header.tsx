@@ -15,31 +15,32 @@ function Header() {
     const [open, setOpen] = useState(false)
 
     return (
-        <header className="">
+        <header className="mb-[16px]">
 
         {/* Mobile */}
-           <div className="flex justify-between md:hidden bg-black">
+           <div className="md:z-0 relative flex justify-between md:hidden mt-8">
                 <button 
                     type="button" 
                     aria-label={open ? "Fechar menu" : "Abrir menu"}
                     aria-expanded={open}
                     onClick={() => setOpen!(!open)}
-                    className="relative z-50"
+                    className="relative z-40"
                     >
                     <img src={Menu} alt=""/>
                 </button>
 
-                <div>
+                <div className="z-30">
                     <h1 className="tracking-normal font-heading font-bold text-offwhite border-2 border-offwhite rounded-full px-4 py-1">PANELÃO SOLIDÁRIO</h1>
                 </div>
                 
-                <div>
+                <div className="z-30">
                     <LogoIcon className="text-offwhite"/>
                 </div>
            </div>
 
-           <nav className="md:hidden">
-                <ul className={`${open ? "flex" : "hidden"} md:flex text-offwhite bg-black w-1/2 fixed left-0 top-0 h-screen flex-col gap-6 p-6 mt-10 font-body font-bold`}>
+           <nav className="md:hidden z-30 relative">
+                <ul className={`${open ? "flex" : "hidden"} gap-12 py-20 md:flex text-offwhite w-[60%] fixed left-0 top-0 h-screen flex-col gap-6 p-6 font-body font-bold
+                               bg-gradient-to-br from-white/30 via-white/15 to-white/5 backdrop-blur-[39px] border-r border-white/0 `}>
                     {menuItems.map((item) => (
                         <li key={item.href}>
                             <a href={item.href}>{item.label}</a>
@@ -50,10 +51,10 @@ function Header() {
         {/* Mobile */}
 
         {/* Desktop */}
-           <div className="text-black hidden md:block md:bg-white">
+           <div className="text-black hidden md:block md:bg-white xl:mx-[149px]">
             <nav>
                 <ul className="flex justify-between items-center">
-                   {menuItems.slice(0,3).map((item) =>(
+                   {menuItems.slice(0,3).map((item) =>( 
                         <li key={item.href} className="font-body font-bold">
                             <a href={item.href}>{item.label}</a>
                         </li>

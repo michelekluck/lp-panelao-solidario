@@ -11,17 +11,21 @@ body {
   --color-primary: #E84641;
   --color-offwhite: #F5F2D0;
   --color-image: rgb(83 21 19 / 46%);
+  --color-darkYellow: #E8C841;
+  --color-aqua: #41E8C1;
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inconsolata", monospace;
 }
 
 .body-text {
+  font-family: "Inconsolata", monospace;
   font-size: 16px;
 }
 
 @media (min-width: 768px) {
   .body-text {
     font-size: 24px;
+    font-family: "Inconsolata", monospace;
   }
 }

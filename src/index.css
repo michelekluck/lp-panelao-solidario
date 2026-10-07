@@ -7,6 +7,12 @@ body {
   margin: 16px;
 }
 
+@media (min-width: 1024px) {
+  body {
+    margin: 16px 89px;
+  }
+}
+
 @theme {
   --color-primary: #E84641;
   --color-offwhite: #F5F2D0;
@@ -23,10 +29,24 @@ body {
   font-size: 16px;
 }
 
+.body-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  color: #E84641;
+  font-weight: bold;
+}
+
 @media (min-width: 768px) {
   .body-text {
     font-size: 24px;
     font-family: "Inconsolata", monospace;
+  }
+
+  .body-title {
+    font-size: 36px;
+    font-family: "Poppins", sans-serif;
+    color: #E84641;
+    font-weight: bold;
   }
 }
 

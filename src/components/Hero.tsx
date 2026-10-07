@@ -4,7 +4,7 @@ import Button from "../components/Button.tsx"
 function Hero() {
     return (
         <div>
-            <section className="z-10 -mt-21 relative lg:z-0 lg:mt-0 h-[100vh] overflow-hidden -mx-4">
+            <section className="z-10 -mt-21 relative lg:z-0 lg:mt-0 md:h-[100vh] overflow-hidden -mx-4 lg:-mx-[89px]">
                 <img
                     src={Voluntarios}
                     alt="Voluntários do Panelão Solidário"
@@ -53,7 +53,9 @@ function Hero() {
                         font-heading 
                         text-[36px] 
                         md:text-[64px]
-                        font-bold"
+                        font-bold
+                        "
+
                     >
                         O futuro começa <br className="md:block lg:hidden" />
                         com um

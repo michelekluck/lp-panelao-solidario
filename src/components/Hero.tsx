@@ -48,7 +48,7 @@ function Hero() {
                         mb-12 
                         leading-9 
                         md:leading-[80px]
-                        mt-70 
+                        mt-100
                         md:mt-90
                         font-heading 
                         text-[36px] 
@@ -57,7 +57,7 @@ function Hero() {
                         "
 
                     >
-                        O futuro começa <br className="md:block lg:hidden" />
+                        O futuro começa
                         com um
                         <br className="lg:block" />
                         prato cheio.

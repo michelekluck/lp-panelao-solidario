@@ -5,6 +5,7 @@
 
 body {
   margin: 16px;
+  background-color: #F8F8F8;
 }
 
 @media (min-width: 1024px) {
@@ -18,6 +19,7 @@ body {
   --color-offwhite: #F5F2D0;
   --color-image: rgb(83 21 19 / 46%);
   --color-darkYellow: #E8C841;
+  --color-lightYellow: #FFEA92;
   --color-aqua: #41E8C1;
 
   --font-heading: "Poppins", sans-serif;
@@ -35,6 +37,7 @@ body {
   color: #E84641;
   font-weight: bold;
 }
+
 
 @media (min-width: 768px) {
   .body-text {

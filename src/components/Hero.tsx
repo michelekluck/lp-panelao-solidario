@@ -45,7 +45,7 @@ function Hero() {
                 >
                     <h2 className="
                         text-white
-                        mb-12 
+                        mb-12  
                         leading-9 
                         md:leading-[80px]
                         mt-100

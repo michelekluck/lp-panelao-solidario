@@ -3,6 +3,10 @@
 
 @import "tailwindcss";
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 16px;
   background-color: #F8F8F8;
@@ -13,6 +17,7 @@ body {
     margin: 16px 89px;
   }
 }
+
 
 @theme {
   --color-primary: #E84641;

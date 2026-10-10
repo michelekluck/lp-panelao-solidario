@@ -1,5 +1,5 @@
-import Text from "../components/Text.tsx"
-import Card from "../components/Card.tsx"
+import Text from "./Text.tsx"
+import Card from "./Card.tsx"
 
 function Numbers() {
     return (

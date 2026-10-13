@@ -3,21 +3,24 @@
 
 @import "tailwindcss";
 
+:root {
+  --page-margin: 16px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-margin: 89px;
+  }
+}
+
 html {
   overflow-x: clip;
 }
 
 body {
-  margin: 16px;
+  margin: 16px var(--page-margin);
   background-color: #F8F8F8;
 }
-
-@media (min-width: 1024px) {
-  body {
-    margin: 16px 89px;
-  }
-}
-
 
 @theme {
   --color-primary: #E84641;
@@ -26,9 +29,40 @@ body {
   --color-darkYellow: #E8C841;
   --color-lightYellow: #FFEA92;
   --color-aqua: #41E8C1;
+  --color-lightPurple: #D8D9FF;
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inconsolata", monospace;
+}
+
+/* Fundo de cor sólida que ignora a margem do body.
+   Uso: className="bleed-bg bg-lightPurple" */
+@layer components {
+  .bleed-bg {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .bleed-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--page-margin) * -1);
+    right: calc(var(--page-margin) * -1);
+    background: inherit;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Camada absoluta que ignora a margem (para elipses, imagens, etc.).
+     Uso: className="bleed-x inset-y-0 overflow-hidden" */
+  .bleed-x {
+    position: absolute;
+    left: calc(var(--page-margin) * -1);
+    right: calc(var(--page-margin) * -1);
+    pointer-events: none;
+  }
 }
 
 .body-text {
@@ -42,7 +76,6 @@ body {
   color: #E84641;
   font-weight: bold;
 }
-
 
 @media (min-width: 768px) {
   .body-text {

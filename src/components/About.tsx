@@ -3,15 +3,12 @@ import Voluntarios from "../assets/images/voluntarios-panelao-about.jpeg";
 
 function About() {
     return (
-        <section className="relative mt-12 md:py-20 py-12">
+        <div className="relative mt-12 md:py-20 py-12">
 
             {/* Camada de fundo: ocupa a seção + a margem do body dos dois lados */}
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0
-                           -left-4 -right-4
-                           overflow-hidden
-                           lg:-left-[89px] lg:-right-[89px]"
+                className="bleed-x inset-y-0 overflow-hidden"
             >
                 {/* Elipse */}
                 <div
@@ -70,7 +67,7 @@ function About() {
 
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 

@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import Numbers from "../components/Numbers"
 import About from "../components/About"
+import Donations from "../components/Donations"
 
 function Home() {
     return (
@@ -14,6 +15,9 @@ function Home() {
                 </section>
                 <section>
                     <About />
+                </section>
+                <section>
+                    <Donations />
                 </section>
             </main>
         </>

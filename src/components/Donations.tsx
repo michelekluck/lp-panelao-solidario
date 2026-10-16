@@ -5,7 +5,7 @@ import Button from "../components/Button.tsx"
 function Donations() {
     return (
         <div className="relative">
-            <div className="bg-lightPurple bleed-bg lg:-top-70 md:-top-30 -top-20 bottom-0 -z-10 lg:-top-32">
+            <div className="bg-lightPurple bleed-bg lg:-mt-70 md:-mt-30 -mt-20 bottom-0 -z-10 lg:-mt-32 pb-12">
                 <div className="relative z-10 pt-30 lg:pt-80 md:pt-40 pb-10 xl:flex xl:gap-4 xl:pt-100 xl:items-center">
                     <div className="xl:w-1/2 xl:p-4 flex flex-col">
                         <Text title="Doações" titleClassName="mb-6 text-left" textClassName="mb-6">

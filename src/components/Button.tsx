@@ -1,9 +1,10 @@
 interface ButtonProps {
     children: React.ReactNode;
     variant: "yellow" | "green";
+    className?: string;
 }
 
-function Button({ children, variant }: ButtonProps) {
+function Button({ children, variant, className = "" }: ButtonProps) {
     const colors = {
         yellow: "bg-darkYellow",
         green: "bg-aqua"
@@ -13,6 +14,7 @@ function Button({ children, variant }: ButtonProps) {
         <button
             type="button"
             className={`${colors[variant]} 
+                ${className}
                 items-center 
                 justify-center 
                 flex text-center 

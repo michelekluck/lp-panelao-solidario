@@ -4,6 +4,7 @@ import Numbers from "../components/Numbers"
 import About from "../components/About"
 import Donations from "../components/Donations"
 import Pix from "../components/Pix"
+import Voluntary from "../components/Voluntary"
 
 function Home() {
     return (
@@ -22,6 +23,9 @@ function Home() {
                 </section>
                 <section>
                     <Pix />
+                </section>
+                <section>
+                    <Voluntary />
                 </section>
             </main>
         </>

@@ -22,6 +22,7 @@ function Pix() {
     return (
         <div className="flex flex-col items-center mt-12">
             <Text title="Vaquinha do Panelão" titleClassName="text-center">
+                {""}
             </Text>
 
             <div className="relative w-full xl:w-[1000px] mt-12">
@@ -39,7 +40,7 @@ function Pix() {
                             <p className="body-text font-bold">{CHAVE_PIX}</p>
 
                             <button onClick={copiar} aria-label="Copiar chave PIX" className="cursor-pointer">
-                                <img src={Copiar} alt="" className="md:w-[30px]" />
+                                <img src={Copiar} alt="" className="mds:w-[30px]" />
                             </button>
 
                             <span

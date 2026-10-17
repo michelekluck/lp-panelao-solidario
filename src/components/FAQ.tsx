@@ -13,7 +13,7 @@ function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null)
 
     return (
-        <section className="mt-24 relative">
+        <section className=" relative bg-offwhite bleed-bg py-20">
             <h2 className="body-title mb-12 text-center">Dúvidas frequentes</h2>
 
             {perguntas.map((item, index) => {

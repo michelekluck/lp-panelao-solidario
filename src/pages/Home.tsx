@@ -7,6 +7,7 @@ import Pix from "../components/Pix"
 import Voluntary from "../components/Voluntary"
 import Event from "../components/EventDay"
 import FAQ from "../components/FAQ"
+import News from "../components/NewsSection"
 
 function Home() {
     return (
@@ -34,6 +35,9 @@ function Home() {
                 </section>
                 <section>
                     <FAQ />
+                </section>
+                <section>
+                    <News />
                 </section>
             </main>
         </>

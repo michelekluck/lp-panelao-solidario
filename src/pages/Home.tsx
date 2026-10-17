@@ -5,6 +5,7 @@ import About from "../components/About"
 import Donations from "../components/Donations"
 import Pix from "../components/Pix"
 import Voluntary from "../components/Voluntary"
+import Event from "../components/EventDay"
 
 function Home() {
     return (
@@ -26,6 +27,9 @@ function Home() {
                 </section>
                 <section>
                     <Voluntary />
+                </section>
+                <section>
+                    <Event />
                 </section>
             </main>
         </>

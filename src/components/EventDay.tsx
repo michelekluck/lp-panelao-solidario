@@ -2,7 +2,7 @@ import Text from "./Text.tsx"
 
 function EventDay() {
     return (
-        <div className="bg-white relative bleed-bg pt-10">
+        <div className="bg-white relative bleed-bg pt-10 pb-30">
             <Text title="Nossos dias de ação" titleClassName="mb-12 text-center" textClassName="text-justify">
                 As ações são realizadas no<strong> primeiro domingo de cada mês</strong>, com <strong>início por volta das 12h30 e encerramento às 19h</strong>. Nesse período, os voluntários se reúnem para preparar as marmitas e, posteriormente, realizar a distribuição das refeições.
                 <br /><br />

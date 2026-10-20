@@ -8,6 +8,7 @@ import Voluntary from "../components/Voluntary"
 import Event from "../components/EventDay"
 import FAQ from "../components/FAQ"
 import News from "../components/NewsSection"
+import Instagram from "../components/Instagram"
 
 function Home() {
     return (
@@ -38,6 +39,9 @@ function Home() {
                 </section>
                 <section>
                     <News />
+                </section>
+                <section>
+                    <Instagram />
                 </section>
             </main>
         </>

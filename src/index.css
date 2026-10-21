@@ -31,6 +31,7 @@ body {
   --color-aqua: #41E8C1;
   --color-lightPurple: #D8D9FF;
   --color-lightPink: #F0DCDB;
+  --color-fontGrey: #404040;
 
   --font-heading: "Poppins", sans-serif;
   --font-body: "Inconsolata", monospace;

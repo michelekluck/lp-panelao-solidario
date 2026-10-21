@@ -9,6 +9,7 @@ import Event from "../components/EventDay"
 import FAQ from "../components/FAQ"
 import News from "../components/NewsSection"
 import Instagram from "../components/Instagram"
+import Footer from "../components/Footer"
 
 function Home() {
     return (
@@ -44,6 +45,7 @@ function Home() {
                     <Instagram />
                 </section>
             </main>
+            <Footer />
         </>
     )
 }

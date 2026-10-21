@@ -5,24 +5,22 @@ import perfil from "../data/instagram-perfil.json"
 function Instagram() {
     return (
         <div className="mt-12 py-12 bg-lightYellow bleed-bg items-center">
-            <div className="mb-12">
+            <div className="md:mb-12 mb-8">
 
                 <a href={`https://www.instagram.com/${perfil.username}`} target="_blank" className="flex items-center gap-4">
                     <div>
-                        <img src={perfil.photo} alt={`Foto de perfil de ${perfil.username}`} className="rounded-full w-[80px]"></img>
+                        <img src={perfil.photo} alt={`Foto de perfil de ${perfil.username}`} className="rounded-full md:w-[80px] w-[60px]"></img>
                     </div>
                     <div>
-                        <p className="font-bold body-text">{perfil.username}</p>
-                        <p className="text-[18px] font-heading">{perfil.biography}</p>
+                        <p className="font-bold font-body text-[20px]">{perfil.username}</p>
+                        <p className="text-[18px] font-heading hidden md:block">{perfil.biography}</p>
                     </div>
                 </a>
 
-                <div>
-
-                </div>
+                <p className="md:text-[18px] font-heading md:hidden mt-4">{perfil.biography}</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 font-body">
+            <div className="grid md:grid-cols-2 gap-4 xl:grid-cols-3 font-body">
                 {posts.map((post) => (
                     <a key={post.id} href={post.permalink} target="_blank" rel="noreferrer">
                         <img

@@ -3,7 +3,7 @@ import Button from "../components/Button.tsx"
 
 function Hero() {
     return (
-        <div>
+        <div id="home">
             <section className="z-10 -mt-22 relative lg:z-0 lg:mt-4 md:h-[100vh] overflow-hidden -mx-4 lg:-mx-[89px]">
                 <img
                     src={Voluntarios}

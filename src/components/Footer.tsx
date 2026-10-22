@@ -17,7 +17,7 @@ const footerItems = [
 
 function Footer() {
     return (
-        <div className="xl:mx-10 2xl:mx-30">
+        <div className="xl:mx-10 2xl:mx-30" id="contato">
             {/* Abaixo de xl: tudo empilhado e centralizado. Em xl: logo à esquerda, links à direita */}
             <div className="mt-12 flex flex-col items-center gap-10 text-center xl:flex-row xl:items-start xl:justify-between xl:text-left">
 

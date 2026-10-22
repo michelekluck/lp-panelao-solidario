@@ -37,13 +37,16 @@ function Header() {
 
             {/* Mobile: barra do header (fica sempre no mesmo lugar, acima do menu) */}
             <div className="relative z-40 mt-8 flex items-center justify-between text-offwhite lg:hidden [text-shadow:0_1px_8px_rgb(0_0_0/0.5)]">
-                <div className="flex items-center gap-3">
-                    <LogoIcon className="text-offwhite" />
-                    <p className="font-heading font-bold text-[16px] leading-[19px]">
-                        PANELÃO <br />
-                        SOLIDÁRIO
-                    </p>
-                </div>
+                <a href="#home">
+                    <div className="flex items-center gap-3">
+                        <LogoIcon className="text-offwhite" />
+                        <p className="font-heading font-bold text-[16px] leading-[19px]">
+                            PANELÃO <br />
+                            SOLIDÁRIO
+                        </p>
+                    </div>
+                </a>
+
 
                 <button
                     type="button"
@@ -98,13 +101,15 @@ function Header() {
                             </li>
                         ))}
 
-                        <li className="flex items-center">
-                            <LogoIcon className="text-primary" />
-                            <h1 className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
-                                PANELÃO <br />
-                                SOLIDÁRIO
-                            </h1>
-                        </li>
+                        <a href="#home">
+                            <li className="flex items-center">
+                                <LogoIcon className="text-primary" />
+                                <h1 className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
+                                    PANELÃO <br />
+                                    SOLIDÁRIO
+                                </h1>
+                            </li>
+                        </a>
 
                         {menuItems.slice(3).map((item) => (
                             <li key={item.href} className="font-body font-bold">

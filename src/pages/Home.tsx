@@ -23,19 +23,19 @@ function Home() {
                 <section>
                     <About />
                 </section>
-                <section>
+                <section id="doar">
                     <Donations />
                 </section>
                 <section>
                     <Pix />
                 </section>
-                <section>
+                <section id="voluntario">
                     <Voluntary />
                 </section>
-                <section>
+                <section id="endereco">
                     <Event />
                 </section>
-                <section>
+                <section id="faq">
                     <FAQ />
                 </section>
                 <section>

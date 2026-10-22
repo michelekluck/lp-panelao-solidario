@@ -4,54 +4,60 @@ import Button from "../components/Button.tsx"
 function Hero() {
     return (
         <div>
-            <section className="z-10 -mt-21 relative lg:z-0 lg:mt-0 md:h-[100vh] overflow-hidden -mx-4 lg:-mx-[89px]">
+            <section className="z-10 -mt-22 relative lg:z-0 lg:mt-4 md:h-[100vh] overflow-hidden -mx-4 lg:-mx-[89px]">
                 <img
                     src={Voluntarios}
                     alt="Voluntários do Panelão Solidário"
-                    className=" 
-                                opacity-70 
-                                w-full 
+                    className="
+                                opacity-70
+                                w-full
                                 h-[650px]
                                 md:h-full
-                                block 
-                                object-cover 
-                                object-[40%_30%] 
-                                lg:object-[center_30%] 
+                                block
+                                object-cover
+                                object-[40%_30%]
+                                lg:object-[center_20%]
                                 "
                 ></img>
 
                 <div className="
                                 h-[650px]
-                                md:h-full 
-                                z-20 
-                                absolute 
-                                inset-0 
+                                md:h-full
+                                z-20
+                                absolute
+                                inset-0
                                 bg-image"
                 >
                 </div>
 
+                {/* Degradê escuro no topo: garante leitura do header sobre a foto */}
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 top-0 z-20 h-40 bg-gradient-to-b from-black/60 to-transparent"
+                />
+
                 <div className="
-                            text-center 
-                            flex 
-                            flex-col 
-                            bottom-90 
-                            mx-4 
-                            z-30 
-                            absolute 
-                            inset-0 
-                            flex 
-                            items-center 
+                            text-center
+                            flex
+                            flex-col
+                            bottom-90
+                            mx-4
+                            z-30
+                            absolute
+                            inset-0
+                            flex
+                            items-center
                             justify-center"
                 >
                     <h2 className="
                         text-white
-                        mb-12  
-                        leading-9 
+                        mb-12
+                        leading-9
                         md:leading-[80px]
                         mt-100
-                        md:mt-90
-                        font-heading 
-                        text-[36px] 
+                        lg:mt-90
+                        font-heading
+                        text-[36px]
                         md:text-[64px]
                         font-bold
                         "
@@ -63,10 +69,10 @@ function Hero() {
                         prato cheio.
                     </h2>
 
-                    <h3 className=" 
-                        text-white 
+                    <h3 className="
+                        text-white
                         text-justify
-                        body-text 
+                        body-text
                         font-bold
                         md:w-[700px]
                         lg:w-[900px]

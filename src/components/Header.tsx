@@ -1,9 +1,11 @@
 import Menu from "../assets/images/menu.svg"
 import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom"
 import LogoIcon from "./LogoIcon";
 
-const menuItems = [
-    { label: "Sobre", href: "#sobre" },
+type MenuItem = { label: string; to?: string; href?: string }
+
+const baseItems: MenuItem[] = [
     { label: "Como doar", href: "#doar" },
     { label: "Ser voluntário", href: "#voluntario" },
     { label: "Endereço", href: "#endereco" },
@@ -11,9 +13,31 @@ const menuItems = [
     { label: "Contato", href: "#contato" }
 ];
 
+type MenuLinkProps = {
+    item: MenuItem
+    className?: string
+    onClick?: () => void
+}
+
+// Renderiza <Link> (troca de página) quando o item tem "to", e <a> (âncora) quando tem "href"
+function MenuLink({ item, className, onClick }: MenuLinkProps) {
+    if (item.to) {
+        return <Link to={item.to} className={className} onClick={onClick}>{item.label}</Link>
+    }
+
+    return <a href={item.href} className={className} onClick={onClick}>{item.label}</a>
+}
+
 function Header() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const { pathname } = useLocation()
+
+    const isHome = pathname === "/"
+    const menuItems: MenuItem[] = [
+        isHome ? { label: "Sobre", to: "/about" } : { label: "Home", to: "/" },
+        ...baseItems
+    ]
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10)
@@ -37,7 +61,7 @@ function Header() {
 
             {/* Mobile: barra do header (fica sempre no mesmo lugar, acima do menu) */}
             <div className="relative z-40 mt-8 flex items-center justify-between text-offwhite lg:hidden [text-shadow:0_1px_8px_rgb(0_0_0/0.5)]">
-                <a href="#home">
+                <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
                     <div className="flex items-center gap-3">
                         <LogoIcon className="text-offwhite" />
                         <p className="font-heading font-bold text-[16px] leading-[19px]">
@@ -45,8 +69,7 @@ function Header() {
                             SOLIDÁRIO
                         </p>
                     </div>
-                </a>
-
+                </Link>
 
                 <button
                     type="button"
@@ -83,8 +106,8 @@ function Header() {
             >
                 <ul className="flex flex-col gap-6 body-text font-bold">
                     {menuItems.map((item) => (
-                        <li key={item.href}>
-                            <a href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
+                        <li key={item.label}>
+                            <MenuLink item={item} onClick={() => setOpen(false)} />
                         </li>
                     ))}
                 </ul>
@@ -96,24 +119,24 @@ function Header() {
                 <nav>
                     <ul className="flex items-center justify-between">
                         {menuItems.slice(0, 3).map((item) => (
-                            <li key={item.href} className="font-body font-bold">
-                                <a href={item.href} className="transition-opacity hover:opacity-80">{item.label}</a>
+                            <li key={item.label} className="font-body font-bold">
+                                <MenuLink item={item} className="transition-opacity hover:opacity-80" />
                             </li>
                         ))}
 
-                        <a href="#home">
-                            <li className="flex items-center">
+                        <li>
+                            <Link to="/" className="flex items-center" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
                                 <LogoIcon className="text-primary" />
-                                <h1 className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
+                                <span className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
                                     PANELÃO <br />
                                     SOLIDÁRIO
-                                </h1>
-                            </li>
-                        </a>
+                                </span>
+                            </Link>
+                        </li>
 
                         {menuItems.slice(3).map((item) => (
-                            <li key={item.href} className="font-body font-bold">
-                                <a href={item.href} className="transition-opacity hover:opacity-80">{item.label}</a>
+                            <li key={item.label} className="font-body font-bold">
+                                <MenuLink item={item} className="transition-opacity hover:opacity-80" />
                             </li>
                         ))}
                     </ul>

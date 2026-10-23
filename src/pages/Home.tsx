@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Header from "../components/Header"
 import Hero from "../components/Hero"
 import Numbers from "../components/Numbers"
@@ -10,6 +12,7 @@ import FAQ from "../components/FAQ"
 import News from "../components/NewsSection"
 import Instagram from "../components/Instagram"
 import Footer from "../components/Footer"
+
 
 function Home() {
     return (

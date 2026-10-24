@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header"
 import HeroAbout from "../components/HeroAbout";
 import Mission from '../components/Mission';
+import WhatWeDo from '../components/WhatWeDo';
 
 function About() {
     return (
@@ -16,6 +17,9 @@ function About() {
                 </section>
                 <section>
                     <Mission />
+                </section>
+                <section>
+                    <WhatWeDo />
                 </section>
             </main>
             <Footer />

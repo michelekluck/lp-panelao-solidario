@@ -31,7 +31,10 @@ function Footer() {
                     </p>
                     <div className="flex gap-4 mt-8">
                         <img src={FacebookIcon} alt="Facebook" className="w-[40px]" />
-                        <img src={InstagramIcon} alt="Instagram" className="w-[40px]" />
+                        <a>
+                            <img src={InstagramIcon} alt="Instagram" className="w-[40px]" />
+                        </a>
+
                     </div>
                 </div>
 
@@ -60,13 +63,13 @@ function Footer() {
 
                     <div>
                         <h3 className="font-bold text-[20px] mb-4">Contato</h3>
-                        <ul>
-                            <li className="flex items-center justify-center xl:justify-start">
+                        <ul className="mx-auto w-fit xl:mx-0">
+                            <li className="flex items-center">
                                 <img src={Email} alt="E-mail" className="w-[20px] shrink-0" />
                                 <p className="text-fontGrey ml-4 min-w-0 break-words">email@teste.com.br</p>
                             </li>
 
-                            <li className="flex items-center justify-center mt-8 xl:justify-start">
+                            <li className="mt-8 flex items-center">
                                 <img src={Telefone} alt="Telefone" className="w-[20px] shrink-0" />
                                 <p className="text-fontGrey ml-4">(41) 0000-0000</p>
                             </li>

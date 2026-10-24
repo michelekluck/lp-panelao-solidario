@@ -20,7 +20,7 @@ function Voluntary() {
 
                         {/* Botão desktop: abaixo do texto */}
                         <div className="hidden xl:flex justify-center mt-12">
-                            <Button variant="green">QUERO SER VOLUNTARIO</Button>
+                            <Button variant="green" whatsapp="Oi! Gostaria de saber como faço para ser voluntário no Panelão Solidário">QUERO SER VOLUNTARIO</Button>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@ function Voluntary() {
 
                 {/* Botão mobile: abaixo da imagem */}
                 <div className="mt-8 flex justify-center xl:hidden">
-                    <Button variant="green">QUERO SER VOLUNTARIO</Button>
+                    <Button variant="green" whatsapp="Oi! Gostaria de saber como faço para ser voluntário no Panelão Solidário">QUERO SER VOLUNTARIO</Button>
                 </div>
             </div>
         </div>

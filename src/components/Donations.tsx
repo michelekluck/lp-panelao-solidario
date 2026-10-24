@@ -4,7 +4,7 @@ import Button from "../components/Button.tsx"
 
 function Donations() {
     return (
-        <div className="relative">
+        <div className="relative isolate">
             <div className="bg-lightPurple bleed-bg lg:-mt-70 md:-mt-30 -mt-20 bottom-0 -z-10 lg:-mt-32 pb-12">
                 <div className="relative z-10 pt-30 lg:pt-80 md:pt-40 pb-10 xl:flex xl:gap-4 xl:pt-100 xl:items-center">
                     <div className="xl:w-1/2 xl:p-4 flex flex-col">
@@ -16,7 +16,7 @@ function Donations() {
 
                         {/* Só aparece no desktop (xl), abaixo do texto */}
                         <div className="hidden xl:flex justify-center mt-12">
-                            <Button variant="yellow">QUERO DOAR</Button>
+                            <Button variant="yellow" whatsapp="Oi! Gostaria de saber como doar para o Panelão Solidário">QUERO DOAR</Button>
                         </div>
                     </div>
 
@@ -27,7 +27,7 @@ function Donations() {
 
                 {/* Só aparece no mobile/tablet, abaixo da imagem */}
                 <div className="flex justify-center xl:hidden">
-                    <Button variant="yellow">QUERO DOAR</Button>
+                    <Button variant="yellow" whatsapp="Oi! Gostaria de saber como doar para o Panelão Solidário">QUERO DOAR</Button>
                 </div>
             </div>
         </div>

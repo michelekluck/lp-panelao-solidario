@@ -85,8 +85,8 @@ function Hero() {
                     </h3>
 
                     <div className="flex gap-12 mt-12">
-                        <Button variant="yellow">QUERO DOAR</Button>
-                        <Button variant="green">QUERO SER VOLUNTÁRIO</Button>
+                        <Button variant="yellow" whatsapp="Oi! Gostaria de saber como doar para o Panelão Solidário">QUERO DOAR</Button>
+                        <Button variant="green" whatsapp="Oi! Gostaria de saber como faço para ser voluntário no Panelão Solidário">QUERO SER VOLUNTÁRIO</Button>
                     </div>
                 </div>
 

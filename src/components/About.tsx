@@ -1,11 +1,13 @@
 import Text from "../components/Text";
 import Voluntarios from "../assets/images/voluntarios-panelao-about.jpeg";
+import { Link } from "react-router-dom"
+
 
 function About() {
     return (
         <div className="relative mt-12 md:py-20 py-12">
 
-            {/* Camada de fundo: ocupa a seção + a margem do body dos dois lados */}
+
             <div
                 aria-hidden="true"
                 className="bleed-x inset-y-0 overflow-hidden"
@@ -48,12 +50,12 @@ function About() {
                             Nosso grupo de voluntários é sempre dos mais divertidos e acolhedores! O Panelão é um grupo de voluntários independente, sem fins lucrativos e sempre pronto para receber todo mundo!
                         </Text>
 
-                        <button
-                            type="button"
-                            className="body-text mt-6 rounded-md bg-primary p-2 text-white cursor-pointer"
+                        <Link
+                            to="/about"
+                            className="body-text mt-6 inline-block rounded-md bg-primary p-2 text-white cursor-pointer"
                         >
                             Saiba mais
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Imagem */}

@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 const perguntas = [
-    { question: "Como posso me tornar voluntário?", answer: "Para se tornar voluntário, basta comparecer ao local no horário da ação e informar que deseja participar como voluntário. Se tiver alguma dúvida, entre em contato conosco pelo WhatsApp: [número de contato]." },
+    { question: "Como posso me tornar voluntário?", answer: "Para se tornar voluntário, basta comparecer ao local no horário da ação e informar que deseja participar como voluntário. Se tiver alguma dúvida, entre em contato conosco pelo WhatsApp: (41) 997199847." },
     { question: "Preciso ter experiência na cozinha para participar?", answer: "Não! Você não precisa ter experiência na cozinha para participar. Toda ajuda é bem-vinda e você pode contribuir de diferentes formas durante as ações." },
     { question: "Como posso fazer uma doação em dinheiro?", answer: "Você pode contribuir com o Panelão Solidário por meio de uma doação via PIX! Basta utilizar a nossa chave PIX: panelaosolidario2019@gmail.com. Toda contribuição faz a diferença e nos ajuda a continuar esse trabalho." },
-    { question: "Quais alimentos e produtos posso doar?", answer: "Para saber quais alimentos e produtos estamos precisando no momento, entre em contato conosco pelo WhatsApp: [número de contato]. Assim, podemos orientar você sobre as principais necessidades da ONG e como sua doação pode contribuir com nossas ações." },
-    { question: "Como faço para entregar uma doação?", answer: "Para combinar a entrega da sua doação, entre em contato conosco pelo WhatsApp: [número de contato]. Assim, podemos orientar você sobre a melhor forma de realizar a entrega" },
-    { question: "Como posso acompanhar as próximas ações?", answer: "Você pode acompanhar as próximas ações pelas publicações no nosso Instagram, [@instagram]. Se quiser receber as informações diretamente, entre em contato pelo WhatsApp: [número de contato], para solicitar sua entrada no grupo de voluntários, onde compartilhamos os detalhes das próximas ações" },
+    { question: "Quais alimentos e produtos posso doar?", answer: "Para saber quais alimentos e produtos estamos precisando no momento, entre em contato conosco pelo WhatsApp: (41) 997199847. Assim, podemos orientar você sobre as principais necessidades da ONG e como sua doação pode contribuir com nossas ações." },
+    { question: "Como faço para entregar uma doação?", answer: "Para combinar a entrega da sua doação, entre em contato conosco pelo WhatsApp: (41) 997199847. Assim, podemos orientar você sobre a melhor forma de realizar a entrega" },
+    { question: "Como posso acompanhar as próximas ações?", answer: "Você pode acompanhar as próximas ações pelas publicações no nosso Instagram, @panelaosolidarioctba. Se quiser receber as informações diretamente, entre em contato pelo WhatsApp: (41) 997199847, para solicitar sua entrada no grupo de voluntários, onde compartilhamos os detalhes das próximas ações" },
 ]
 
 function FAQ() {

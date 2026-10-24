@@ -37,7 +37,7 @@ function Pix() {
                         <img src={PixIcon} alt="PIX" className="mb-6" />
 
                         <div className="relative flex gap-4">
-                            <p className="body-text font-bold">{CHAVE_PIX}</p>
+                            <p className="body-text font-bold select-all">{CHAVE_PIX}</p>
 
                             <button onClick={copiar} aria-label="Copiar chave PIX" className="cursor-pointer">
                                 <img src={Copiar} alt="" className="mds:w-[30px]" />

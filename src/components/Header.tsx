@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom"
 import LogoIcon from "./LogoIcon";
 import MenuLink, { type MenuItem } from "./MenuLink"
 
-// O "/" antes do "#" faz as âncoras apontarem para a home, mesmo estando em outra página
 const baseItems: MenuItem[] = [
     { label: "Como doar", href: "/#doar" },
     { label: "Ser voluntário", href: "/#voluntario" },
@@ -18,7 +17,6 @@ function Header() {
     const [scrolled, setScrolled] = useState(false)
     const { pathname } = useLocation()
 
-    // Na home o primeiro item leva para "Sobre"; nas outras páginas, volta para a home
     const isHome = pathname === "/"
     const menuItems: MenuItem[] = [
         isHome ? { label: "Sobre", to: "/about" } : { label: "Home", to: "/" },
@@ -28,7 +26,7 @@ function Header() {
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10)
 
-        onScroll() // confere o estado inicial (ex.: página recarregada já rolada)
+        onScroll()
         window.addEventListener("scroll", onScroll, { passive: true })
 
         return () => window.removeEventListener("scroll", onScroll)

@@ -2,37 +2,23 @@ import Menu from "../assets/images/menu.svg"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import LogoIcon from "./LogoIcon";
+import MenuLink, { type MenuItem } from "./MenuLink"
 
-type MenuItem = { label: string; to?: string; href?: string }
-
+// O "/" antes do "#" faz as âncoras apontarem para a home, mesmo estando em outra página
 const baseItems: MenuItem[] = [
-    { label: "Como doar", href: "#doar" },
-    { label: "Ser voluntário", href: "#voluntario" },
-    { label: "Endereço", href: "#endereco" },
-    { label: "Dúvidas frequentes", href: "#faq" },
-    { label: "Contato", href: "#contato" }
+    { label: "Como doar", href: "/#doar" },
+    { label: "Ser voluntário", href: "/#voluntario" },
+    { label: "Endereço", href: "/#endereco" },
+    { label: "Dúvidas frequentes", href: "/#faq" },
+    { label: "Contato", href: "/#contato" }
 ];
-
-type MenuLinkProps = {
-    item: MenuItem
-    className?: string
-    onClick?: () => void
-}
-
-// Renderiza <Link> (troca de página) quando o item tem "to", e <a> (âncora) quando tem "href"
-function MenuLink({ item, className, onClick }: MenuLinkProps) {
-    if (item.to) {
-        return <Link to={item.to} className={className} onClick={onClick}>{item.label}</Link>
-    }
-
-    return <a href={item.href} className={className} onClick={onClick}>{item.label}</a>
-}
 
 function Header() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const { pathname } = useLocation()
 
+    // Na home o primeiro item leva para "Sobre"; nas outras páginas, volta para a home
     const isHome = pathname === "/"
     const menuItems: MenuItem[] = [
         isHome ? { label: "Sobre", to: "/about" } : { label: "Home", to: "/" },
@@ -125,7 +111,7 @@ function Header() {
                         ))}
 
                         <li>
-                            <Link to="/" className="flex items-center" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
+                            <Link to="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                 <LogoIcon className="text-primary" />
                                 <span className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
                                     PANELÃO <br />

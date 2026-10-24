@@ -1,27 +1,26 @@
 import Icon from "./Icon"
+import MenuLink, { type MenuItem } from "./MenuLink"
 import FacebookIcon from "../assets/images/facebook.svg"
 import InstagramIcon from "../assets/images/instagram.svg"
 import Email from "../assets/images/email.svg"
 import Telefone from "../assets/images/telefone.svg"
 
-const footerItems = [
-    { label: "Sobre o Panelão", href: "#sobre" },
-    { label: "Nossas ações", href: "#acoes" },
-    { label: "Números", href: "#numeros" },
-    { label: "Dúvidas frequentes", href: "#faq" },
-    { label: "Quero doar", href: "#doar" },
-    { label: "Quero ser voluntário", href: "#voluntario" },
-    { label: "Seja um parceiro", href: "#parceiro" },
-    { label: "Endereço", href: "#endereco" }
+const footerItems: MenuItem[] = [
+    { label: "Sobre o Panelão", to: "/about" },
+    { label: "Nossas ações", href: "/#endereco" },
+    { label: "Números", href: "/#numeros" },
+    { label: "Dúvidas frequentes", href: "/#faq" },
+    { label: "Quero doar", href: "/#doar" },
+    { label: "Quero ser voluntário", href: "/#voluntario" },
+    { label: "Seja um parceiro", href: "/#doar" },
+    { label: "Endereço", href: "/#endereco" }
 ]
 
 function Footer() {
     return (
         <div className="xl:mx-10 2xl:mx-30" id="contato">
-            {/* Abaixo de xl: tudo empilhado e centralizado. Em xl: logo à esquerda, links à direita */}
             <div className="mt-12 flex flex-col items-center gap-10 text-center xl:flex-row xl:items-start xl:justify-between xl:text-left">
 
-                {/* Logo, descrição e redes sociais */}
                 <div className="flex flex-col items-center xl:items-start">
                     <div className="flex gap-2">
                         <Icon className="text-primary w-[50px]"></Icon>
@@ -36,14 +35,13 @@ function Footer() {
                     </div>
                 </div>
 
-                {/* Links: 1 coluna (mobile), 3 colunas (md), linha com espaçamento (xl) */}
                 <nav className="font-body grid w-full gap-10 md:grid-cols-3 md:gap-8 xl:mt-8 xl:flex xl:w-auto xl:gap-16 2xl:gap-24">
                     <div>
                         <h3 className="font-bold text-[20px] mb-4">Conheça o Panelão</h3>
                         <ul>
                             {footerItems.slice(0, 4).map((item) =>
-                                <li key={item.href} className="mt-8 md:mt-4 text-fontGrey">
-                                    <a href={item.href}>{item.label}</a>
+                                <li key={item.label} className="mt-8 md:mt-4 text-fontGrey">
+                                    <MenuLink item={item} className="transition-opacity hover:opacity-80" />
                                 </li>
                             )}
                         </ul>
@@ -53,8 +51,8 @@ function Footer() {
                         <h3 className="font-bold text-[20px] mb-4">Participe</h3>
                         <ul>
                             {footerItems.slice(4).map((item) =>
-                                <li key={item.href} className="mt-8 md:mt-4 text-fontGrey">
-                                    <a href={item.href}>{item.label}</a>
+                                <li key={item.label} className="mt-8 md:mt-4 text-fontGrey">
+                                    <MenuLink item={item} className="transition-opacity hover:opacity-80" />
                                 </li>
                             )}
                         </ul>

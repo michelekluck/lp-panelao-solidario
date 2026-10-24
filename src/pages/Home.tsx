@@ -20,7 +20,7 @@ function Home() {
             <Header />
             <main>
                 <Hero />
-                <section>
+                <section id="numeros">
                     <Numbers />
                 </section>
                 <section>

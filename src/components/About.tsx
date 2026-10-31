@@ -16,7 +16,7 @@ function About() {
                 <div
                     className="absolute left-1/2 top-0 h-full w-[220%]
                                -translate-x-1/2 rounded-[50%] bg-lightYellow
-                               sm:w-[170%] lg:w-[125%]"
+                               sm:w-[170%] lg:w-[125%] z-10"
                 />
             </div>
 

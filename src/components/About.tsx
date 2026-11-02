@@ -1,12 +1,17 @@
 import Text from "../components/Text";
 import Voluntarios from "../assets/images/voluntarios-panelao-about.jpeg";
 import { Link } from "react-router-dom"
+import { useEffect } from "react";
 
 
 function About() {
-    return (
-        <div className="relative mt-12 md:py-20 py-12">
+    useEffect(() => {
+        // Só vai ao topo se a URL não tiver âncora (#algo)
+        if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" })
+    }, [])
 
+    return (
+        <div className="relative mt-12 md:py-20 py-12 page-in">
 
             <div
                 aria-hidden="true"

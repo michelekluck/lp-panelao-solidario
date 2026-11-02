@@ -23,7 +23,7 @@ function WhatWeDo() {
                 </div>
                 <div className="min-w-0 flex-1 py-12">
                     <p className="body-text">
-                        Todo primeiro domingo do mês distribuímos, em média, 200 marmitas no jantar, no Mesa Solidária Patrícia Castilho e 200 no BASE, chegando a xxx marmitas distribuídas durante o ano todo.
+                        Todo primeiro domingo do mês distribuímos, em média, 300 marmitas no jantar, no Mesa Solidária Patrícia Castilho e 250 no BASE, chegando a 6.000 marmitas distribuídas durante o ano todo.
                         <br /><br />
                         As marmitas são sempre acompanhadas de uma sobremesa. No Mesa Solidária Patrícia Castilho, tem sempre um bolo fresquinho perfumando o salão, no BASE distribuímos frutas e paçoquinhas.
                         <br /><br />

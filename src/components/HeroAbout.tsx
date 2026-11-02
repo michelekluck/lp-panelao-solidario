@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import Voluntario from "../assets/images/voluntario.png"
 
 function HeroAbout() {
+    useEffect(() => {
+        // Só vai ao topo se a URL não tiver âncora (#algo)
+        if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" })
+    }, [])
+
     return (
-        <div className="-mx-[var(--page-margin)] flex flex-col overflow-hidden lg:flex-row -mt-22 lg:mt-4">
+        <div className="page-in -mx-[var(--page-margin)] flex flex-col overflow-hidden lg:flex-row -mt-22 lg:mt-4">
             <div className="bg-lightYellow px-[var(--page-margin)] py-12 lg:w-1/2">
                 <h1 className="hero-title text-primary ">
                     Nossa história, <br className="hidden lg:block" />nossa causa

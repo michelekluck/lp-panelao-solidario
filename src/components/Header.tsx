@@ -23,6 +23,8 @@ function Header() {
         ...baseItems
     ]
 
+    const logoTo = isHome ? "/" : "/about"
+
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10)
 
@@ -45,7 +47,7 @@ function Header() {
 
             {/* Mobile: barra do header (fica sempre no mesmo lugar, acima do menu) */}
             <div className="relative z-40 mt-8 flex items-center justify-between text-offwhite lg:hidden [text-shadow:0_1px_8px_rgb(0_0_0/0.5)]">
-                <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
+                <Link to={logoTo} onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
                     <div className="flex items-center gap-3">
                         <LogoIcon className="text-offwhite" />
                         <p className="font-heading font-bold text-[16px] leading-[19px]">
@@ -109,7 +111,7 @@ function Header() {
                         ))}
 
                         <li>
-                            <Link to="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                            <Link to={logoTo} className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                 <LogoIcon className="text-primary" />
                                 <span className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
                                     PANELÃO <br />

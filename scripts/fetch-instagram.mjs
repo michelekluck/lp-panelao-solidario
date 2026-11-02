@@ -1,5 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs"
 
+// rodar npm run instagram para trazer dados atualizados
+
 const token = process.env.INSTAGRAM_TOKEN
 
 // Sem token ou com erro: sai sem mexer nos arquivos, mantendo os posts antigos

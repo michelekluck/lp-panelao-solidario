@@ -1,14 +1,16 @@
 import Carousel from "./Carousel"
-import Voluntarios from "../assets/images/voluntarios-entregando-marmita.jpeg"
+import Fazendo_bolo from "../assets/images/voluntaria-fazendo-bolo.jpeg"
 import Voluntarias from "../assets/images/voluntarias-montando-caixas.jpeg"
 import Bolo from "../assets/images/bolo.jpeg"
-import Voluntario from "../assets/images/voluntario-cozinhando.jpeg"
+import Voluntarias_trabalhando from "../assets/images/voluntarias-trabalhando.jpeg"
+import Cortando_abobora from "../assets/images/cortando_abobora.jpeg"
 
 const photos = [
-    { src: Voluntarios, alt: "Voluntária distribuindo bolo" },
+    { src: Fazendo_bolo, alt: "Voluntária fazendo bolo" },
     { src: Voluntarias, alt: "Voluntária montando caixas de marmita" },
     { src: Bolo, alt: "Bolo" },
-    { src: Voluntario, alt: "Voluntário cozinhando" }
+    { src: Voluntarias_trabalhando, alt: "Voluntárias cortando batata" },
+    { src: Cortando_abobora, alt: "Cortando abóbora" }
 
 ]
 

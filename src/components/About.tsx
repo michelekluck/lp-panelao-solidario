@@ -1,17 +1,10 @@
 import Text from "../components/Text";
-import Voluntarios from "../assets/images/voluntarios-panelao-about.jpeg";
+import Voluntarios from "../assets/images/duda-e-joao.png";
 import { Link } from "react-router-dom"
-import { useEffect } from "react";
-
 
 function About() {
-    useEffect(() => {
-        // Só vai ao topo se a URL não tiver âncora (#algo)
-        if (!window.location.hash) window.scrollTo({ top: 0, behavior: "instant" })
-    }, [])
-
     return (
-        <div className="relative mt-12 md:py-20 py-12 page-in">
+        <div className="relative mt-20 md:py-20 py-12 page-in">
 
             <div
                 aria-hidden="true"
@@ -26,25 +19,25 @@ function About() {
             </div>
 
             {/* Conteúdo */}
-            <div className="relative z-10 px-4">
+            <div className="relative z-10 px-4 pt-6 md:pt-0">
 
                 {/* Título centralizado acima */}
                 <Text
                     title="Nossa história, nossa causa"
-                    titleClassName="mb-8 text-center"
+                    titleClassName="mb-8 text-center xl:mb-12 xl:text-[64px] xl:leading-tight"
                     textClassName="hidden"
                 >
                     {""}
                 </Text>
 
-                {/* Texto e imagem */}
-                <div className="flex flex-col gap-6 xl:flex-row-reverse xl:items-center xl:gap-12">
+                {/* Texto e imagem: no xl ficam lado a lado e o conjunto é centralizado */}
+                <div className="flex flex-col gap-6 xl:mx-auto xl:max-w-7xl xl:flex-row-reverse xl:items-center xl:justify-center xl:gap-16">
 
                     {/* Texto e botão */}
-                    <div className="min-w-0 xl:flex-1">
+                    <div className="min-w-0 xl:max-w-2xl xl:flex-none">
                         <Text
                             title=""
-                            textClassName="text-justify"
+                            textClassName="text-justify xl:text-[22px] xl:leading-relaxed"
                         >
                             O Panelão Solidário surgiu por volta de 2016 com o intuito de levar comida gostosa e nutritiva para quem precisa. Antes mesmo da fundação dos Mesas Solidárias, o Panelão já estava na ativa distribuindo sopa na Praça Tiradentes. Desde então, o trabalho seguiu ininterrupto, nem a pandemia de COVID-19 foi capaz de nos parar!
 
@@ -64,11 +57,11 @@ function About() {
                     </div>
 
                     {/* Imagem */}
-                    <div className="flex justify-center ">
+                    <div className="flex justify-center xl:flex-none">
                         <img
                             src={Voluntarios}
                             alt="Várias pessoas voluntárias do Panelão Solidário usando camiseta vermelha da ONG"
-                            className="h-[300px] w-[300px] rounded-full object-cover sm:h-[370px] sm:w-[370px] md:h-[450px] md:w-[450px] lg:w-[500px] lg:h-[500px]"
+                            className="grayscale h-75 w-75 rounded-full object-cover sm:h-92.5 sm:w-92.5 md:h-112.5 md:w-112.5 lg:w-125 lg:h-125"
                         />
                     </div>
 

@@ -5,7 +5,7 @@ import Voluntarios from "../assets/images/voluntarios.png"
 function Voluntary() {
     return (
         <div className="relative">
-            <div className="bg-lightPink bleed-bg  py-12">
+            <div className="bg-lightPink bleed-bg py-20">
                 <div className="relative z-10 flex flex-col gap-8 xl:flex-row xl:items-center xl:gap-4">
 
                     {/* Texto: primeiro no HTML (em cima no mobile), à direita no desktop */}

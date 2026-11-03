@@ -64,13 +64,13 @@ function Numbers() {
         <>
             <Text
                 title="Uma história feita por muitas mãos"
-                titleClassName="mb-6 mt-6"
+                titleClassName="mb-6 lg:mt-20 mt-12"
                 textClassName="text-justify"
             >
                 Cada marmita, cada ação e cada pessoa envolvida faz parte de uma mesma história: a de uma comunidade que escolheu transformar solidariedade em atitude.
             </Text>
 
-            <div ref={cardsRef} className="md:flex md:gap-4 mt-24">
+            <div ref={cardsRef} className="md:flex md:gap-4 lg:mt-30 mt-24">
                 <Card variant="red" title={`+${marmitas}`} className="mt-16 md:mt-0">
                     Marmitas distribuidas em 2026
                 </Card>

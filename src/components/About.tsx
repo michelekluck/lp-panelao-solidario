@@ -1,5 +1,5 @@
 import Text from "../components/Text";
-import Voluntarios from "../assets/images/duda-e-joao.png";
+import Voluntarios from "../assets/images/teste10.jpeg";
 import { Link } from "react-router-dom"
 
 function About() {
@@ -52,7 +52,7 @@ function About() {
                             to="/about"
                             className="body-text mt-6 inline-block rounded-md bg-primary p-2 text-white cursor-pointer"
                         >
-                            Saiba mais
+                            SAIBA MAIS
                         </Link>
                     </div>
 

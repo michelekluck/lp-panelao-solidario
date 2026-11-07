@@ -20,7 +20,7 @@ function Pix() {
     }
 
     return (
-        <div className="flex flex-col items-center bg-white relative bleed-bg py-20">
+        <div className="flex flex-col items-center bg-white relative bleed-bg md:py-20 py-12">
             <Text title="Vaquinha do Panelão" titleClassName="text-center">
                 {""}
             </Text>

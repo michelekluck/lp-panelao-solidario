@@ -3,7 +3,7 @@ import noticias from "../data/noticias.json"
 
 function NewsSection() {
     return (
-        <section className="mt-12 py-20">
+        <section className="md:py-20 py-12">
             <h2 className="mb-12 text-2xl body-title text-center">O Panelão na mídia 📰</h2>
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

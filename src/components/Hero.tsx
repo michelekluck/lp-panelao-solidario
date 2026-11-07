@@ -1,6 +1,6 @@
 // import Voluntarios from "../assets/images/voluntarios-panelao-solidario.jpeg"
 import Button from "../components/Button.tsx"
-import Panelao from "../assets/images/ju-principal.jpeg"
+import Panelao from "../assets/images/servindo-bolo.jpeg"
 
 function Hero() {
     return (
@@ -10,7 +10,7 @@ function Hero() {
                     src={Panelao}
                     alt="Voluntários do Panelão Solidário"
                     className="
-                        opacity-80
+                        opacity-70
                         w-full
                         h-162.5
                         md:h-full

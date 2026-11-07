@@ -4,7 +4,7 @@ import perfil from "../data/instagram-perfil.json"
 
 function Instagram() {
     return (
-        <div className="mt-12 py-20 bg-lightYellow bleed-bg items-center">
+        <div className="py-12 md:py-20 bg-lightYellow bleed-bg items-center">
             <div className="md:mb-12 mb-8">
 
                 <a href={`https://www.instagram.com/${perfil.username}`} target="_blank" className="flex items-center gap-4">

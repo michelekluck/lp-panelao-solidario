@@ -5,12 +5,12 @@ import Voluntarios from "../assets/images/voluntarios.png"
 function Voluntary() {
     return (
         <div className="relative">
-            <div className="bg-lightPink bleed-bg py-20">
-                <div className="relative z-10 flex flex-col gap-8 xl:flex-row xl:items-center xl:gap-4">
+            <div className="bg-lightPink bleed-bg md:py-20 py-12">
+                <div className="relative z-10 flex flex-col xl:flex-row xl:items-center xl:gap-4">
 
                     {/* Texto: primeiro no HTML (em cima no mobile), à direita no desktop */}
                     <div className="flex flex-col xl:order-2 xl:w-1/2 xl:p-4">
-                        <Text title="Seja voluntário" titleClassName="mb-6 text-left" textClassName="mb-6 text-justify">
+                        <Text title="Seja voluntário" titleClassName="mb-6 text-left" textClassName="mb-12 text-justify">
                             Mais do que doar, você também pode doar o seu tempo e fazer parte das ações do Panelão Solidário. Nossos voluntários ajudam na preparação dos alimentos, montagem das marmitas, organização e distribuição das refeições.
                             <br /><br />
                             Não é preciso ter experiência, apenas vontade de ajudar e fazer a diferença. Clique no botão abaixo para entrar em contato conosco, tirar suas dúvidas e receber mais informações sobre como participar das próximas ações.
@@ -35,7 +35,7 @@ function Voluntary() {
                 </div>
 
                 {/* Botão mobile: abaixo da imagem */}
-                <div className="mt-8 flex justify-center xl:hidden">
+                <div className="mt-12 flex justify-center xl:hidden">
                     <Button variant="green" whatsapp="Oi! Gostaria de saber como faço para ser voluntário no Panelão Solidário">QUERO SER VOLUNTARIO</Button>
                 </div>
             </div>

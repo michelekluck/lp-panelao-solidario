@@ -1,5 +1,5 @@
 import Text from "../components/Text";
-import Voluntarios from "../assets/images/teste10.jpeg";
+import Voluntarios from "../assets/images/montando-marmita3.jpeg";
 import { Link } from "react-router-dom"
 
 function About() {

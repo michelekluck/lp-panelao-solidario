@@ -1,10 +1,10 @@
 import Text from "../components/Text.tsx"
-import Voluntaria from "../assets/images/voluntaria-distribuindo-marmita.png"
+import Voluntaria from "../assets/images/voluntaria-distribuindo-marmita.webp"
 import Button from "../components/Button.tsx"
 
 function Donations() {
     return (
-        <div className="relative isolate">
+        <div className="relative isolate ">
             <div className="bg-lightPurple bleed-bg lg:-mt-70 md:-mt-30 -mt-20 bottom-0 -z-10 pb-12">
                 <div className="relative z-10 pt-30 lg:pt-80 md:pt-40 pb-10 xl:flex xl:gap-4 xl:pt-100 xl:items-center">
                     <div className="xl:w-1/2 xl:p-4 flex flex-col">
@@ -21,7 +21,7 @@ function Donations() {
                     </div>
 
                     <div className="xl:w-1/2 xl:p-4 md:items-center md:flex md:justify-center md:mt-12">
-                        <img src={Voluntaria} alt="Voluntária distribuindo marmitas" className="rounded-2xl " />
+                        <img src={Voluntaria} alt="Voluntária distribuindo marmita." className="rounded-2xl " />
                     </div>
                 </div>
 

@@ -31,7 +31,7 @@ function Footer() {
                     </p>
                     <div className="flex gap-4 mt-8">
                         <a href="https://www.instagram.com/panelaosolidarioctba/" target="_blank">
-                            <img src={InstagramIcon} alt="Instagram" className="w-[40px]" />
+                            <img src={InstagramIcon} alt="Icone do instagram" className="w-[40px]" />
                         </a>
 
                     </div>
@@ -64,7 +64,7 @@ function Footer() {
                         <h3 className="font-bold text-[20px] mb-4">Contato</h3>
                         <ul className="mx-auto w-fit xl:mx-0">
                             <li className="flex items-center">
-                                <img src={Telefone} alt="Telefone" className="w-[20px] shrink-0" />
+                                <img src={Telefone} alt="Icone de Telefone" className="w-[20px] shrink-0" />
                                 <p className="text-fontGrey ml-4">(41) 9 9719-9847</p>
                             </li>
                         </ul>

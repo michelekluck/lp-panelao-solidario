@@ -1,5 +1,5 @@
 import Menu from "../assets/images/menu.svg"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import LogoIcon from "./LogoIcon";
 import MenuLink, { type MenuItem } from "./MenuLink"
@@ -15,6 +15,7 @@ const baseItems: MenuItem[] = [
 function Header() {
     const [open, setOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const menuButtonRef = useRef<HTMLButtonElement>(null)
     const { pathname } = useLocation()
 
     const isHome = pathname === "/"
@@ -32,8 +33,23 @@ function Header() {
         return () => window.removeEventListener("scroll", onScroll)
     }, [])
 
+    // Esc fecha o menu e devolve o foco ao botão que o abriu
+    useEffect(() => {
+        if (!open) return
+
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setOpen(false)
+                menuButtonRef.current?.focus()
+            }
+        }
+
+        window.addEventListener("keydown", onKeyDown)
+        return () => window.removeEventListener("keydown", onKeyDown)
+    }, [open])
+
     return (
-        <div
+        <header
             className={`bleed-bg sticky top-4 z-50 mb-[16px]
                 before:-top-16 before:-bottom-4
                 before:bg-gradient-to-br before:from-primary/70 before:via-black/55 before:to-black/40
@@ -42,10 +58,22 @@ function Header() {
                 lg:before:bg-none lg:before:bg-white lg:before:backdrop-blur-none lg:before:opacity-100
                 ${scrolled ? "before:opacity-100" : "before:opacity-0"}`}
         >
+            {/* Link para pular o menu (só aparece quando recebe foco pelo teclado).
+                O destino é o <main id="conteudo" tabIndex={-1}> da página. */}
+            <a
+                href="#conteudo"
+                className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-black"
+            >
+                Pular para o conteúdo
+            </a>
 
             {/* Mobile: barra do header (fica sempre no mesmo lugar, acima do menu) */}
             <div className="relative z-40 mt-8 flex items-center justify-between text-offwhite lg:hidden [text-shadow:0_1px_8px_rgb(0_0_0/0.5)]">
-                <Link to="/" onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}>
+                <Link
+                    to="/"
+                    aria-label="Panelão Solidário, página inicial"
+                    onClick={() => { setOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }) }}
+                >
                     <div className="flex items-center gap-3">
                         <LogoIcon className="text-offwhite" />
                         <p className="font-heading font-bold text-[16px] leading-[19px]">
@@ -56,6 +84,7 @@ function Header() {
                 </Link>
 
                 <button
+                    ref={menuButtonRef}
                     type="button"
                     aria-label={open ? "Fechar menu" : "Abrir menu"}
                     aria-expanded={open}
@@ -63,7 +92,7 @@ function Header() {
                     onClick={() => setOpen(!open)}
                 >
                     {open ? (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-7 w-7">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-7 w-7">
                             <path d="M5 5l14 14M19 5L5 19" />
                         </svg>
                     ) : (
@@ -83,6 +112,7 @@ function Header() {
             {/* Mobile: menu lateral, desliza por baixo da barra do header */}
             <nav
                 id="menu-mobile"
+                aria-label="Menu principal"
                 className={`fixed -left-4 -top-4 z-30 h-[calc(100vh+2rem)] w-[calc(75%+1rem)] max-w-[21rem] pl-[calc(var(--page-margin)+1rem)] pr-6 pt-[9rem] text-offwhite lg:hidden
                     bg-gradient-to-br from-primary/70 via-black/55 to-black/40 backdrop-blur-[39px]
                     transition-all duration-300
@@ -100,7 +130,7 @@ function Header() {
 
             {/* Desktop: fundo branco, texto preto e logo vermelha */}
             <div className="relative hidden text-black lg:block xl:mx-[149px]">
-                <nav>
+                <nav aria-label="Menu principal">
                     <ul className="flex items-center justify-between">
                         {menuItems.slice(0, 3).map((item) => (
                             <li key={item.label} className="font-body font-bold">
@@ -109,7 +139,12 @@ function Header() {
                         ))}
 
                         <li>
-                            <Link to="/" className="flex items-center" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                            <Link
+                                to="/"
+                                aria-label="Panelão Solidário, página inicial"
+                                className="flex items-center"
+                                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                            >
                                 <LogoIcon className="text-primary" />
                                 <span className="ml-4 font-heading leading-[19px] font-bold text-[16px] text-primary">
                                     PANELÃO <br />
@@ -127,7 +162,7 @@ function Header() {
                 </nav>
             </div>
             {/* Desktop */}
-        </div>
+        </header>
     )
 }
 

@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 
 type Slide = {
     src: string
+    srcSet?: string // ex: "foto-400.webp 400w, foto-800.webp 800w, foto-1200.webp 1200w"
     alt: string
 }
 
@@ -11,11 +12,26 @@ type CarouselProps = {
     interval?: number // tempo entre as trocas (ms)
 }
 
+// Quanto da tela cada slide ocupa (precisa bater com as classes basis-* do slide)
+const SIZES = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 85vw"
+
+// Quantas fotos ficam visíveis no início (3 no desktop) + 1 de folga para o autoplay
+const EAGER_COUNT = 4
+
+// Duração da troca automática/setas (ms)
+const SLIDE_DURATION = 650
+
+const easeInOutCubic = (t: number) =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
 function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
     const wrapperRef = useRef<HTMLDivElement>(null)
     const trackRef = useRef<HTMLDivElement>(null)
     const settleTimer = useRef<number | undefined>(undefined)
     const timerRef = useRef<number | undefined>(undefined)
+    const rafRef = useRef<number>(0)
+    const animRef = useRef<{ to: number } | null>(null) // animação em andamento (destino)
+    const stepRef = useRef(0) // largura de um slide (guardada, para não medir a cada scroll)
     const indexRef = useRef(0)
     // Cada fonte de pausa é guardada separadamente
     const pauseRef = useRef({ hover: false, touch: false, focus: false })
@@ -25,7 +41,34 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
     const [edges, setEdges] = useState({ left: 0, right: 0 })
 
     // 3 cópias da lista: [antes][meio][depois]. A gente vive sempre na do meio.
-    const slides = [...images, ...images, ...images]
+    // useMemo: os slides não são recriados quando só o "index" muda (re-render barato)
+    const slideElements = useMemo(() => {
+        const slides = [...images, ...images, ...images]
+
+        return slides.map((image, i) => {
+            // As fotos visíveis no início são as da cópia do meio (índices n, n+1, n+2...)
+            const isInitial = i >= n && i < n + EAGER_COUNT
+
+            return (
+                <div
+                    key={`${i}-${image.src}`}
+                    aria-hidden={i < n || i >= 2 * n}
+                    className="shrink-0 basis-[85%] snap-start px-2 md:basis-1/2 lg:basis-1/3"
+                >
+                    <img
+                        src={image.src}
+                        srcSet={image.srcSet}
+                        sizes={image.srcSet ? SIZES : undefined}
+                        alt={image.alt}
+                        loading={isInitial ? "eager" : "lazy"}
+                        decoding="async"
+                        fetchPriority={i === n ? "high" : "auto"}
+                        className="aspect-[4/3] w-full rounded-2xl object-cover"
+                    />
+                </div>
+            )
+        })
+    }, [images, n])
 
     const isPaused = () => {
         const p = pauseRef.current
@@ -43,15 +86,17 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
         })
     }, [bleed])
 
-    const getStep = () => {
-        const slide = trackRef.current?.firstElementChild as HTMLElement | undefined
-        return slide?.offsetWidth ?? 0
-    }
+    // Interrompe a animação (usada quando a pessoa toca/rola, ou no resize)
+    const cancelAnim = useCallback(() => {
+        window.cancelAnimationFrame(rafRef.current)
+        animRef.current = null
+        if (trackRef.current) trackRef.current.style.scrollSnapType = ""
+    }, [])
 
     // Se o scroll saiu da cópia do meio, volta para a posição equivalente nela (sem animação)
     const normalize = useCallback(() => {
         const track = trackRef.current
-        const step = getStep()
+        const step = stepRef.current
         if (!track || !step) return
 
         const setWidth = n * step
@@ -63,36 +108,82 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
 
     const onScroll = () => {
         const track = trackRef.current
-        const step = getStep()
+        const step = stepRef.current
         if (!track || !step) return
 
         const abs = Math.round(track.scrollLeft / step)
         const real = ((abs % n) + n) % n
-        indexRef.current = real
-        setIndex(real)
 
-        // Só "teleporta" quando o scroll parou, para não cortar a animação suave
+        // Só atualiza o estado quando a foto realmente mudou (evita re-render a cada frame)
+        if (real !== indexRef.current) {
+            indexRef.current = real
+            setIndex(real)
+        }
+
+        // Só "teleporta" quando o scroll parou (para o caso de arrastar com o dedo)
         window.clearTimeout(settleTimer.current)
         settleTimer.current = window.setTimeout(normalize, 120)
     }
 
+    // Animação própria (requestAnimationFrame) em vez do scroll "smooth" do navegador.
+    // Durante a animação o snap é desligado, senão ele briga com o movimento e dá o "tranco".
+    const animateTo = useCallback(
+        (target: number) => {
+            const track = trackRef.current
+            if (!track) return
+
+            window.cancelAnimationFrame(rafRef.current)
+
+            const from = track.scrollLeft
+            const distance = target - from
+            if (Math.abs(distance) < 1) return
+
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            const duration = reduceMotion ? 0 : SLIDE_DURATION
+            const startTime = performance.now()
+
+            track.style.scrollSnapType = "none"
+            animRef.current = { to: target }
+
+            const tick = (now: number) => {
+                const t = duration ? Math.min(1, (now - startTime) / duration) : 1
+                track.scrollLeft = from + distance * easeInOutCubic(t)
+
+                if (t < 1) {
+                    rafRef.current = window.requestAnimationFrame(tick)
+                } else {
+                    animRef.current = null
+                    normalize() // volta para a cópia do meio no mesmo instante, sem esperar
+                    track.style.scrollSnapType = "" // devolve o snap (já está num ponto exato)
+                }
+            }
+
+            rafRef.current = window.requestAnimationFrame(tick)
+        },
+        [normalize]
+    )
+
     // Vai para uma posição relativa à atual (+1 = próxima, -1 = anterior)
-    const goBy = useCallback((delta: number) => {
-        const track = trackRef.current
-        const step = getStep()
-        if (!track || !step) return
+    const goBy = useCallback(
+        (delta: number) => {
+            const track = trackRef.current
+            const step = stepRef.current
+            if (!track || !step) return
 
-        const abs = Math.round(track.scrollLeft / step)
-        track.scrollTo({ left: (abs + delta) * step, behavior: "smooth" })
-    }, [])
+            // Se já está animando, conta a partir do destino (cliques rápidos não se perdem)
+            const base = animRef.current ? animRef.current.to : track.scrollLeft
+            const abs = Math.round(base / step)
+            animateTo((abs + delta) * step)
+        },
+        [animateTo]
+    )
 
-    // Vai para uma foto específica (pontinhos), na cópia do meio
+    // Vai para uma foto específica (pontinhos), pelo caminho mais curto
     const goTo = (i: number) => {
-        const track = trackRef.current
-        const step = getStep()
-        if (!track || !step) return
-
-        track.scrollTo({ left: (n + i) * step, behavior: "smooth" })
+        let delta = i - indexRef.current
+        if (delta > n / 2) delta -= n
+        else if (delta < -n / 2) delta += n
+        goBy(delta)
     }
 
     // Autoplay: pode ser chamado de novo para reiniciar a contagem
@@ -118,26 +209,46 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
         startAutoplay()
     }
 
-    // Posição inicial e ajuste no resize
+    // Mede os slides e mantém a posição sempre que o tamanho mudar (resize, bleed, etc.)
     useEffect(() => {
-        const onResize = () => {
-            measureEdges()
-            const track = trackRef.current
-            const step = getStep()
-            if (track && step) track.scrollLeft = (n + indexRef.current) * step
+        const track = trackRef.current
+        if (!track) return
+
+        const sync = () => {
+            const slide = track.firstElementChild as HTMLElement | null
+            if (!slide) return
+
+            cancelAnim()
+            stepRef.current = slide.getBoundingClientRect().width
+            track.scrollLeft = (n + indexRef.current) * stepRef.current
         }
 
-        onResize()
-        window.addEventListener("resize", onResize)
-        return () => window.removeEventListener("resize", onResize)
-    }, [measureEdges, n])
+        const observer = new ResizeObserver(sync)
+        observer.observe(track)
+        if (track.firstElementChild) observer.observe(track.firstElementChild)
+
+        return () => observer.disconnect()
+    }, [n, cancelAnim])
+
+    // Margens do modo "bleed"
+    useEffect(() => {
+        measureEdges()
+        window.addEventListener("resize", measureEdges)
+        return () => window.removeEventListener("resize", measureEdges)
+    }, [measureEdges])
 
     useEffect(() => {
         startAutoplay()
         return () => window.clearInterval(timerRef.current)
     }, [startAutoplay])
 
-    useEffect(() => () => window.clearTimeout(settleTimer.current), [])
+    useEffect(
+        () => () => {
+            window.clearTimeout(settleTimer.current)
+            window.cancelAnimationFrame(rafRef.current)
+        },
+        []
+    )
 
     const trackStyle = bleed
         ? { marginLeft: -edges.left, marginRight: -edges.right }
@@ -153,7 +264,7 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
             // Hover só conta para mouse real (ignora o mouse emulado do toque)
             onPointerEnter={(e) => { if (e.pointerType === "mouse") pauseRef.current.hover = true }}
             onPointerLeave={(e) => { if (e.pointerType === "mouse") pauseRef.current.hover = false }}
-            onTouchStart={() => { pauseRef.current.touch = true }}
+            onTouchStart={() => { pauseRef.current.touch = true; cancelAnim() }}
             onTouchEnd={() => { pauseRef.current.touch = false }}
             onTouchCancel={() => { pauseRef.current.touch = false }}
             // Foco só pausa se veio do teclado, não de um clique
@@ -166,23 +277,11 @@ function Carousel({ images, bleed = false, interval = 3000 }: CarouselProps) {
             <div
                 ref={trackRef}
                 onScroll={onScroll}
+                onWheel={cancelAnim}
                 style={trackStyle}
                 className={`flex snap-x snap-mandatory overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${bleed ? "" : "-mx-2"}`}
             >
-                {slides.map((image, i) => (
-                    <div
-                        key={`${i}-${image.src}`}
-                        aria-hidden={i < n || i >= 2 * n}
-                        className="shrink-0 basis-[85%] snap-start px-2 md:basis-1/2 lg:basis-1/3"
-                    >
-                        <img
-                            src={image.src}
-                            alt={image.alt}
-                            loading={i < n + 3 ? "eager" : "lazy"}
-                            className="aspect-[4/3] w-full rounded-2xl object-cover"
-                        />
-                    </div>
-                ))}
+                {slideElements}
             </div>
 
             {/* Seta anterior (sempre ativa, já que não tem começo) */}

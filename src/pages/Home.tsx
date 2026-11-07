@@ -39,25 +39,25 @@ function Home() {
             <Header />
             <main className="page-in">
                 <Hero />
-                <section id="numeros">
+                <section id="numeros" className="scroll-mt-28">
                     <Numbers />
                 </section>
                 <section>
                     <About />
                 </section>
-                <section id="doar">
+                <section id="doar" className="scroll-mt-28">
                     <Donations />
                 </section>
                 <section>
                     <Pix />
                 </section>
-                <section id="voluntario">
+                <section id="voluntario" className="scroll-mt-28">
                     <Voluntary />
                 </section>
-                <section id="endereco">
+                <section id="endereco" className="scroll-mt-28">
                     <Event />
                 </section>
-                <section id="faq">
+                <section id="faq" className="scroll-mt-28">
                     <FAQ />
                 </section>
                 <section>

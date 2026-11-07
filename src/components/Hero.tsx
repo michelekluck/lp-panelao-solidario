@@ -1,35 +1,44 @@
 // import Voluntarios from "../assets/images/voluntarios-panelao-solidario.jpeg"
 import Button from "../components/Button.tsx"
-import Panelao from "../assets/images/servindo-bolo.jpeg"
+import Panelao from "../assets/images/servindo-bolo.webp"
 
 function Hero() {
     return (
         <div>
-            <section className="z-10 -mt-22 relative lg:z-0 lg:mt-4 md:h-screen overflow-hidden -mx-4 lg:-mx-22.25">
+            {/* A section cresce junto com o conteúdo (min-h em vez de h fixa),
+                então em telas baixas nada é cortado pelo overflow-hidden */}
+            <section className="
+                relative
+                z-10
+                -mt-22
+                lg:z-0
+                lg:mt-4
+                flex
+                flex-col
+                min-h-162.5
+                md:min-h-screen
+                overflow-hidden
+                -mx-4
+                lg:-mx-22.25"
+            >
+                {/* Foto de fundo: preenche a section, qualquer que seja a altura */}
                 <img
                     src={Panelao}
-                    alt="Voluntários do Panelão Solidário"
+                    alt="Voluntário servindo bolo."
+                    fetchPriority="high"
                     className="
-                        opacity-70
+                        absolute
+                        inset-0
+                        h-full
                         w-full
-                        h-162.5
-                        md:h-full
-                        block
+                        opacity-70
                         object-cover
                         object-[70%_10%]
                         lg:object-[center_40%]
                     "
                 />
 
-                <div className="
-                    h-162.5
-                    md:h-full
-                    z-20
-                    absolute
-                    inset-0
-                    bg-image"
-                >
-                </div>
+                <div aria-hidden="true" className="absolute inset-0 z-20 bg-image" />
 
                 {/* Degradê escuro no topo: garante leitura do header sobre a foto */}
                 <div
@@ -37,20 +46,25 @@ function Hero() {
                     className="pointer-events-none absolute inset-x-0 top-0 z-20 h-40 bg-linear-to-b from-black/60 to-transparent"
                 />
 
+                {/* Conteúdo no fluxo normal: fica colado embaixo e empurra a section
+                    para cima quando falta espaço. O pt-32 reserva a área do header. */}
                 <div className="
-                    text-center
-                    flex-col
-                    bottom-90
-                    mx-4
+                    relative
                     z-30
-                    absolute
-                    inset-0
                     flex
+                    flex-1
+                    flex-col
                     items-center
-                    justify-center"
+                    justify-center
+                    text-center
+                    mx-4
+                    pt-28
+                    pb-12
+                    md:pt-32
+                    md:pb-16"
                 >
                     {/* Wrapper: no mobile, o parágrafo segue a largura do título */}
-                    <div className="w-fit max-w-full mt-100 lg:mt-90 md:w-auto">
+                    <div className="w-fit max-w-full md:w-auto">
                         <h2 className="
                             text-white
                             mb-12
@@ -86,13 +100,14 @@ function Hero() {
                         </h3>
                     </div>
 
-                    <div className="flex gap-12 mt-12">
+                    <div className="flex flex-wrap justify-center gap-12 mt-12">
                         <Button variant="yellow" whatsapp="Oi! Gostaria de saber como doar para o Panelão Solidário">QUERO DOAR</Button>
                         <Button variant="green" whatsapp="Oi! Gostaria de saber como faço para ser voluntário no Panelão Solidário">QUERO SER VOLUNTÁRIO</Button>
                     </div>
                 </div>
 
-                <div className="md:absolute md:bottom-0 md:left-0 md:z-40 bg-darkYellow w-full h-[18px] lg:h-[58px]"></div>
+                {/* Faixa amarela: sempre no fim da section */}
+                <div className="relative z-40 bg-darkYellow w-full h-[18px] lg:h-[58px]"></div>
             </section>
         </div>
     )

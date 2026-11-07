@@ -1,18 +1,18 @@
 
 import Text from "../components/Text"
-import Ju from "../assets/images/voluntaria-chef.jpeg"
-import Duda from "../assets/images/voluntaria-duda.jpeg"
-import Marmita from "../assets/images/marmita.jpeg"
+import Voluntaria_Cozinhhando from "../assets/images/ju-cozinhando.webp"
+import Voluntaria_Distribuindo_Bolo from "../assets/images/duda-distribuindo-bolo.webp"
+import Marmita from "../assets/images/marmita.webp"
 import Carousel from "./Carousel"
-import Ju_Marmita from "../assets/images/ju-distribuindo-marmita.jpeg"
-import Montando_marmita from "../assets/images/montando-marmita.jpeg"
-import Servindo_bolo from "../assets/images/servindo-bolo.jpeg"
+import Voluntaria_Distribuindo_marmita from "../assets/images/ju-distribuindo-marmita.webp"
+import Montando_marmita from "../assets/images/ju-montando-marmita.webp"
+import Servindo_bolo from "../assets/images/servindo-bolo.webp"
 
 const missionPhotos = [
-    { src: Ju, alt: "Voluntária cozinhando" },
-    { src: Duda, alt: "Voluntária distribuindo bolos" },
+    { src: Voluntaria_Cozinhhando, alt: "Voluntária cozinhando" },
+    { src: Voluntaria_Distribuindo_Bolo, alt: "Voluntária distribuindo bolos" },
     { src: Marmita, alt: "Marmita sendo montada" },
-    { src: Ju_Marmita, alt: "Marmita sendo distribuida" },
+    { src: Voluntaria_Distribuindo_marmita, alt: "Marmita sendo distribuida" },
     { src: Montando_marmita, alt: "Marmita sendo montada." },
     { src: Servindo_bolo, alt: "Voluntário distribuindo bolo" }
 ]

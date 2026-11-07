@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Voluntario from "../assets/images/voluntario.png"
+import Voluntario from "../assets/images/voluntario-distribuindo-marmita.webp"
 
 function HeroAbout() {
     useEffect(() => {
@@ -25,7 +25,7 @@ function HeroAbout() {
             <div className="relative order-first min-h-[300px] lg:order-none lg:w-1/2">
                 <img
                     src={Voluntario}
-                    alt="Voluntários do Panelão Solidário"
+                    alt="Voluntário distribuindo marmita."
                     className="absolute inset-0 h-full w-full object-cover opacity-90"
                 />
 

@@ -1,5 +1,5 @@
 import Text from "../components/Text";
-import Voluntarios from "../assets/images/montando-marmita3.jpeg";
+import Voluntarios from "../assets/images/montando-marmita2.webp";
 import { Link } from "react-router-dom"
 
 function About() {
@@ -60,7 +60,7 @@ function About() {
                     <div className="flex justify-center xl:flex-none">
                         <img
                             src={Voluntarios}
-                            alt="Várias pessoas voluntárias do Panelão Solidário usando camiseta vermelha da ONG"
+                            alt="Pessoas voluntárias do panelão solidário montando as marmitas que serão distribuidas."
                             className="grayscale h-75 w-75 rounded-full object-cover sm:h-92.5 sm:w-92.5 md:h-112.5 md:w-112.5 lg:w-125 lg:h-125"
                         />
                     </div>

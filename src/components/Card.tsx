@@ -36,7 +36,7 @@ function Card({ className = "", children, variant, title }: CardProps) {
                         `
                     }
                 >
-                    <img src={Garfo} alt="" className="h-[62px] w-[79px]" />
+                    <img src={Garfo} alt="Icone de garfo e faca cruzados" className="h-[62px] w-[79px]" />
                 </div>
             )}
 

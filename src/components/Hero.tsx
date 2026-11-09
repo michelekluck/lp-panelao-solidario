@@ -31,7 +31,7 @@ function Hero() {
                         inset-0
                         h-full
                         w-full
-                        opacity-70
+                        opacity-90
                         object-cover
                         object-[70%_10%]
                         lg:object-[center_40%]

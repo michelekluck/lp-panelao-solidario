@@ -1,7 +1,6 @@
 interface TextProps {
     title: React.ReactNode;
     children: React.ReactNode;
-    className?: string;
     titleClassName?: string;
     textClassName?: String
 }

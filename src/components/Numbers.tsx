@@ -6,14 +6,13 @@ import Card from "./Card.tsx"
 function useCountUp(target: number, start: boolean, duration = 2000) {
     const [value, setValue] = useState(0)
 
-    useEffect(() => {
-        if (!start) return
+    // Quem desativou animações no sistema vê o número final direto
+    const reduzMovimento =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-        // Quem desativou animações no sistema vê o número final direto
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            setValue(target)
-            return
-        }
+    useEffect(() => {
+        if (!start || reduzMovimento) return
 
         let frame = 0
         const inicio = performance.now()
@@ -28,8 +27,9 @@ function useCountUp(target: number, start: boolean, duration = 2000) {
 
         frame = requestAnimationFrame(tick)
         return () => cancelAnimationFrame(frame)
-    }, [target, start, duration])
+    }, [target, start, duration, reduzMovimento])
 
+    if (reduzMovimento) return start ? target : 0
     return value
 }
 

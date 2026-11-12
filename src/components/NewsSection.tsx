@@ -1,5 +1,14 @@
 import CardNews from "../components/CardNews"
-import noticias from "../data/noticias.json"
+import noticiasJson from "../data/noticias.json"
+
+type Noticia = {
+    url: string
+    image: string
+    title: string
+    description: string
+}
+
+const noticias: Noticia[] = noticiasJson
 
 function NewsSection() {
     return (

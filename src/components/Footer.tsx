@@ -1,8 +1,6 @@
 import Icon from "./Icon"
 import MenuLink, { type MenuItem } from "./MenuLink"
-import FacebookIcon from "../assets/images/facebook.svg"
 import InstagramIcon from "../assets/images/instagram.svg"
-import Email from "../assets/images/email.svg"
 import Telefone from "../assets/images/telefone.svg"
 
 const footerItems: MenuItem[] = [

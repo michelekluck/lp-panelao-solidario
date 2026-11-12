@@ -7,7 +7,6 @@ interface TextProps {
 }
 
 function Text({
-    className = "",
     titleClassName = "",
     textClassName = "",
     title,

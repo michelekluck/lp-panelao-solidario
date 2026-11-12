@@ -2,7 +2,7 @@ interface TextProps {
     title: React.ReactNode;
     children: React.ReactNode;
     titleClassName?: string;
-    textClassName?: String
+    textClassName?: string
 }
 
 function Text({

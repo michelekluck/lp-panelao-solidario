@@ -29,7 +29,7 @@ function Footer() {
                         Coletivo voluntário que leva alimentação e roupas para a população em situação de rua.
                     </p>
                     <div className="flex gap-4 mt-8">
-                        <a href="https://www.instagram.com/panelaosolidarioctba/" target="_blank">
+                        <a href="https://www.instagram.com/panelaosolidarioctba/" target="_blank" rel="noreferrer">
                             <img src={InstagramIcon} alt="Icone do instagram" className="w-[40px]" />
                         </a>
 

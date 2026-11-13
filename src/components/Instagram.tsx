@@ -13,7 +13,7 @@ function Instagram() {
         <div className="py-12 md:py-20 bg-lightYellow bleed-bg items-center">
             <div className="md:mb-12 mb-8">
 
-                <a href={`https://www.instagram.com/${perfil.username}`} target="_blank" className="flex items-center gap-4">
+                <a href={`https://www.instagram.com/${perfil.username}`} target="_blank" rel="noreferrer" className="flex items-center gap-4">
                     <div>
                         <img src={comBase(perfil.photo)} alt={`Foto de perfil de ${perfil.username}`} className="rounded-full md:w-[80px] w-[60px]"></img>
                     </div>

@@ -1,4 +1,5 @@
 import Icon from "./Icon"
+import { Link } from "react-router-dom"
 import MenuLink, { type MenuItem } from "./MenuLink"
 import InstagramIcon from "../assets/images/instagram.svg"
 import Telefone from "../assets/images/telefone.svg"
@@ -20,10 +21,10 @@ function Footer() {
             <div className="mt-12 flex flex-col items-center gap-10 text-center xl:flex-row xl:items-start xl:justify-between xl:text-left">
 
                 <div className="flex flex-col items-center xl:items-start">
-                    <a href="/" className="flex gap-2">
+                    <Link to="/" className="flex gap-2">
                         <Icon className="text-primary w-[50px]"></Icon>
                         <p className="font-heading text-primary font-bold mt-8 text-[24px]">Panelão Solidário</p>
-                    </a>
+                    </Link>
                     <p className="font-body text-fontGrey mt-4 max-w-md xl:w-[298px] xl:text-justify">
                         Coletivo voluntário que leva alimentação e roupas para a população em situação de rua.
                     </p>

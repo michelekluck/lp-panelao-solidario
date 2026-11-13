@@ -1,6 +1,12 @@
 import posts from "../data/instagram.json"
 import perfil from "../data/instagram-perfil.json"
 
+// Junta o "base" do Vite (/lp-panelao-solidario/) aos caminhos locais das imagens.
+// URLs completas (https://...) passam direto.
+const comBase = (caminho: string) =>
+    /^https?:\/\//.test(caminho)
+        ? caminho
+        : `${import.meta.env.BASE_URL}${caminho.replace(/^\//, "")}`
 
 function Instagram() {
     return (
@@ -9,7 +15,7 @@ function Instagram() {
 
                 <a href={`https://www.instagram.com/${perfil.username}`} target="_blank" className="flex items-center gap-4">
                     <div>
-                        <img src={perfil.photo} alt={`Foto de perfil de ${perfil.username}`} className="rounded-full md:w-[80px] w-[60px]"></img>
+                        <img src={comBase(perfil.photo)} alt={`Foto de perfil de ${perfil.username}`} className="rounded-full md:w-[80px] w-[60px]"></img>
                     </div>
                     <div>
                         <p className="font-bold font-body text-[20px]">{perfil.username}</p>
@@ -24,7 +30,7 @@ function Instagram() {
                 {posts.map((post) => (
                     <a key={post.id} href={post.permalink} target="_blank" rel="noreferrer">
                         <img
-                            src={post.image}
+                            src={comBase(post.image)}
                             alt={post.caption.slice(0, 100) || "Post do Instagram"}
                             className="aspect-square object-cover rounded-t-2xl"
                         />

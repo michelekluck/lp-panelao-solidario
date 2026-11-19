@@ -1,6 +1,6 @@
 import Text from "../components/Text.tsx"
 import Button from "../components/Button.tsx"
-import Voluntarios from "../assets/images/voluntarios-cortando-carne.webp"
+import Voluntarios from "../assets/images/voluntarios-montando-marmita.png"
 
 function Voluntary() {
     return (

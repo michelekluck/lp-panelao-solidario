@@ -27,7 +27,7 @@ jobs:
       - run: npm ci
 
       - name: Atualizar posts do Instagram
-        run: npm run instagram
+        run: npm run instagram:ci
         env:
           INSTAGRAM_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
 
